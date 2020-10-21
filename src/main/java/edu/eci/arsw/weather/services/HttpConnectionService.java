@@ -20,6 +20,9 @@ public class HttpConnectionService {
         } catch (UnirestException e) {
             throw new OpenWeatherServiceException("Error de conexion con Open Weather", e);
         }
+        if(response.getBody().getObject().getString("cod").equals("404")){
+            throw new OpenWeatherServiceException("Ciudad no encontrada");
+        }
         JSONObject jsonObject = response.getBody().getObject();
         return getWeather(jsonObject);
     }

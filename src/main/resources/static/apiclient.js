@@ -21,7 +21,11 @@ apiclient = (function () {
                 callback(res);
             })
             .catch(error => {
-                alert(error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'City not found',
+                })
             });
 
     }

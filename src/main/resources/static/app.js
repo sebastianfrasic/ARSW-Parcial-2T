@@ -2,7 +2,16 @@ var app = (function () {
 
 
     function getWeatherOfACity(ciudad) {
-        apiclient.getWeatherOfACity(ciudad, actualizarTabla);
+        if (ciudad != null && ciudad != "") {
+            apiclient.getWeatherOfACity(ciudad, actualizarTabla);
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Enter a valid city!',
+            })
+        }
+
     }
 
     function actualizarTabla(data) {
