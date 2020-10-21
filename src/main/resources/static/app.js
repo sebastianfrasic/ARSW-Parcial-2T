@@ -1,39 +1,66 @@
 var app = (function () {
 
-    function find(nombre) {
-        initMap();
-        getAirportsByName(nombre, _table);
+
+    function getWeatherOfACity(ciudad) {
+        apiclient.getWeatherOfACity(ciudad, actualizarTabla);
     }
 
-    function getAirportsByName(name, callback) {
-        console.log(name);
-        var getPromise = $.get("http://localhost:8080/airports/" + name);
-        getPromise.then(
-            function (data) {
-                console.log(JSON.parse(data));
-                _table(JSON.parse(data));
-            },
-            function () {
-                console.log('error')
-            }
-        );
-        return getPromise;
+    function actualizarTabla(data) {
+        var tabla = $("table");
+        var body = $("tbody");
+        if (body != null) {
+            body.remove();
+        }
+        tabla.append("<tbody>");
+        var tblBody = $("tbody");
+
+        var fila = '<tr> <td>' + data.countryCode + '</td> <td>' + data.city + '</td> <td>' + data.weather + '</td> <td>' + data.description + '</td> <td>' + data.temperatura + '</td><td>' + data.thermalSensation + '</td></tr>';
+        tblBody.append(fila);
+
+
+        tabla.append(tblBody);
+        tabla.append("</tbody>");
+
+        initMap(data);
     }
 
-    function _table(data) {
-        $("#filasAeropuerto").empty();
-        data.map(function (element) {
-            var markup = "<tr> <td>" + element.code + "</td> <td>" + element.name + "</td> <td>" + element.city + "</td> <td>" + element.countryCode + "</td> </tr>";
-            $("#filasAeropuerto").append(markup)
+
+    var map;
+
+    function initMap(data) {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: -34.397, lng: 150.644},
+            zoom: 8
         });
-
         plotMarkers(data);
     }
 
-    return {
-        init: function () {
-            initMap();
-        },
-        find: find
+    var markers;
+    var bounds;
+
+    function plotMarkers(m) {
+        markers = [];
+        bounds = new google.maps.LatLngBounds();
+
+
+        var position = new google.maps.LatLng(m.latitud, m.longitud);
+
+        markers.push(
+            new google.maps.Marker({
+                position: position,
+                map: map,
+                animation: google.maps.Animation.DROP
+            })
+        );
+
+        bounds.extend(position);
+
+        map.fitBounds(bounds);
     }
+
+
+    return {
+        getWeatherOfACity: getWeatherOfACity
+    }
+
 })();
