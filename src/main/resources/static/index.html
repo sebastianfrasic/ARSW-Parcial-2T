@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TODO supply a title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css"/>
+
+</head>
+
+
+<body>
+<div class="container">
+    <h2>Bienvenido a Airports finder!</h2>
+    <p>
+        <input id="airport" type="text" placeholder="Nombre del aeropuerto">
+        <button type="button" onclick="app.find(airport.value)">Encontrar</button>
+    </p>
+    <table class="table table-striped">
+        <thread class="thead-dark">
+            <tr>
+                <th scope="col">Código del aeropuerto</th>
+                <th scope="col">Nombre del aeropuerto</th>
+                <th scope="col">Ciudad</th>
+                <th scope="col">Código del país</th>
+            </tr>
+        </thread>
+        <tbody id="filasAeropuerto"></tbody>
+    </table>
+    <div id="map"></div>
+</div>
+</body>
+
+<footer class="text-center">
+    Hecho por <strong> Juan Sebastián Frásica Galeano </strong>
+</footer>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="/app.js"></script>
+<script src="/map.js"></script>
+
+</html>
