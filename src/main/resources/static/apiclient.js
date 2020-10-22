@@ -4,8 +4,6 @@ apiclient = (function () {
     function getWeatherOfACity(city_name, callback) {
 
         const promise = new Promise((resolve, reject) => {
-            $.ajax({
-                url: "https://open-weather-arsw.herokuapp.com/weather/" + city_name,
                 type: 'GET',
                 contentType: "application/json"
             }).done(function (response) {
