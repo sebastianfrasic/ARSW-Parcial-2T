@@ -53,7 +53,6 @@ var app = (function () {
         markers = [];
         bounds = new google.maps.LatLngBounds();
 
-
         var position = new google.maps.LatLng(m.latitud, m.longitud);
 
         markers.push(
@@ -65,11 +64,8 @@ var app = (function () {
         );
 
         bounds.extend(position);
+        map.fitBounds(bounds);
 
-        map.fitBounds(bounds);
-        bounds.extend(position);
-        map.fitBounds(bounds);
-        map.setZoom(4);
     }
 
 

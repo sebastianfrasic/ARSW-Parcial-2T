@@ -24,7 +24,7 @@ apiclient = (function () {
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: 'City not found',
+                    text: 'Error connecting with the API',
                 })
             });
 
