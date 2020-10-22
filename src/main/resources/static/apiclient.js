@@ -1,12 +1,11 @@
 apiclient = (function () {
-    var url = "https://open-weather-arsw.herokuapp.com/";
-    var localhost = "http://localhost:8080/";
+    var localhost = "http://localhost:8080";
 
     function getWeatherOfACity(city_name, callback) {
 
         const promise = new Promise((resolve, reject) => {
             $.ajax({
-                url: url + " weather/" + city_name,
+                url: "https://open-weather-arsw.herokuapp.com/weather/" + city_name,
                 type: 'GET',
                 contentType: "application/json"
             }).done(function (response) {
