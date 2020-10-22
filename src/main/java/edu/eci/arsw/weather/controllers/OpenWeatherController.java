@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 
 @RestController
 @RequestMapping(value = "/weather")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class OpenWeatherController {
 
     @Autowired

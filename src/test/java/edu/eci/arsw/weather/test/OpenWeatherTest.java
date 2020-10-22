@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {OpenWeatherApplication.class})
-public class AirportsFinderTest {
+public class OpenWeatherTest {
 
     @Test
     public void doSomething() throws OpenWeatherPersistenceException {

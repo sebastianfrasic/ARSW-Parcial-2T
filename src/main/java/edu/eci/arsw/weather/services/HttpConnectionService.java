@@ -20,14 +20,15 @@ public class HttpConnectionService {
         } catch (UnirestException e) {
             throw new OpenWeatherServiceException("Error de conexion con Open Weather", e);
         }
-        if(response.getBody().getObject().getString("cod").equals("404")){
+        System.out.println(response.getBody().getObject());
+        if (response.getBody().getObject().getInt("cod") == 404) {
             throw new OpenWeatherServiceException("Ciudad no encontrada");
         }
         JSONObject jsonObject = response.getBody().getObject();
         return getWeather(jsonObject);
     }
 
-    private Weather getWeather(JSONObject jsonObject){
+    private Weather getWeather(JSONObject jsonObject) {
         String countryCode = jsonObject.getJSONObject("sys").getString("country");
         String city = jsonObject.getString("name");
         String weather = jsonObject.getJSONArray("weather").getJSONObject(0).getString("main");

@@ -1,5 +1,6 @@
 package edu.eci.arsw.weather.model;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Weather {
@@ -12,6 +13,7 @@ public class Weather {
     private double thermalSensation;
     private double latitud;
     private double longitud;
+    private LocalDateTime localDateTime;
 
     public Weather() {
     }
@@ -90,6 +92,14 @@ public class Weather {
 
     public void setLongitud(double longitud) {
         this.longitud = longitud;
+    }
+
+    public LocalDateTime getLocalDateTime() {
+        return localDateTime;
+    }
+
+    public void setLocalDateTime(LocalDateTime localDateTime) {
+        this.localDateTime = localDateTime;
     }
 
     @Override

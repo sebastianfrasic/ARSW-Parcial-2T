@@ -2,6 +2,10 @@ var app = (function () {
 
 
     function getWeatherOfACity(ciudad) {
+        var body = $("tbody");
+        if (body !== null) {
+            body.remove();
+        }
         if (ciudad != null && ciudad != "") {
             apiclient.getWeatherOfACity(ciudad, actualizarTabla);
         } else {
@@ -26,8 +30,6 @@ var app = (function () {
         var fila = '<tr> <td>' + data.countryCode + '</td> <td>' + data.city + '</td> <td>' + data.weather + '</td> <td>' + data.description + '</td> <td>' + data.temperatura + '</td><td>' + data.thermalSensation + '</td></tr>';
         tblBody.append(fila);
 
-
-        tabla.append(tblBody);
         tabla.append("</tbody>");
 
         initMap(data);
