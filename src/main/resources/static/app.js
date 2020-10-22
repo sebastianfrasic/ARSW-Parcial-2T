@@ -65,7 +65,7 @@ var app = (function () {
 
         bounds.extend(position);
         map.fitBounds(bounds);
-
+        map.setZoom(4);
     }
 
 
